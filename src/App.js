@@ -42,7 +42,7 @@ function App() {
   }
 
   function clearCompleted() {
-    const newTasks = tasks.filter(task => !task.completed)
+    const newTasks = tasks.filter(task => task.completed)
     setTasks(newTasks)
   }
 
@@ -51,15 +51,25 @@ function App() {
   }
 
   return (
-    <>
-      <h3>Date: {date}</h3>
-      <button onClick={addTask}>Add Task</button>
-      <input ref={taskNameRef} type="text" />
+    <div id="content">
+      <div className="row">
+        <div className="col">
+          <h3>Date: {date}</h3>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-9">
+          <input id="text-box" ref={taskNameRef} placeholder="Enter a Task for Today" type="text" />
+        </div>
+        <div className="col">
+          <button className="btn btn-success" onClick={addTask}>Add Task</button>
+        </div>
+      </div>
       <TodoList tasks={tasks} toggleTask={toggleTask}/>
-      <button onClick = {clearCompleted}>Clear Completed Tasks</button>
-      <button onClick = {clearTasks}>Clear All</button>
-      <div>{tasks.filter (todo => !todo.completed).length} Tasks left</div>
-    </>
+      <button className="btn btn-primary" onClick = {clearCompleted}>Clear Completed Tasks</button>
+      <button className="btn btn-danger" onClick = {clearTasks}>Clear All</button>
+      <h3>{tasks.filter (todo => !todo.completed).length} Tasks left</h3>
+    </div>
   )
 }
 

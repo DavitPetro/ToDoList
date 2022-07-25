@@ -1,0 +1,18 @@
+/* Filename: Style.css
+   Description: A stylesheet for the to-do list program
+*/
+
+#root {
+    display: flex;
+}
+
+#content{
+    background: white;
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+}
+
+#text-box{
+    width: 100%;
+}
