@@ -29,6 +29,15 @@
     margin-top: 10px;
 }
 
+#t-left{
+    float: left;
+}
+
+#t-comp{
+    float: right;
+    text-align: right;
+}
+
 .task {
     font-size: 16pt;
 }

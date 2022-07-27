@@ -78,8 +78,9 @@ function App() {
           <button className="btn btn-outline-danger ms-3" onClick = {clearTasks}>Clear All</button>
         </div>
       </div>
-      <div className="row">
-        <h3>{tasks.filter (task => !task.completed ).length} Tasks left</h3>
+      <div>
+        <h3 id="t-left">{tasks.filter (task => !task.completed ).length} Tasks left</h3>
+        <h3 id="t-comp">{tasks.filter (task => task.completed ).length} Tasks Completed</h3>
       </div>
     </div>
   )
