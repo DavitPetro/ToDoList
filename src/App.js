@@ -13,6 +13,10 @@ function App() {
   const taskNameRef = useRef() 
 
   useEffect(() => {
+    // Create a random color for the background
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    document.body.style.background = "#" + randomColor;
+    // Load previously saved tasks
     const storedTasks = JSON.parse(localStorage.getItem(storageKey))
     if (storedTasks) {
       setTasks(storedTasks)
@@ -42,7 +46,7 @@ function App() {
   }
 
   function clearCompleted() {
-    const newTasks = tasks.filter(task => task.completed)
+    const newTasks = tasks.filter(task => !task.completed)
     setTasks(newTasks)
   }
 
@@ -62,13 +66,21 @@ function App() {
           <input id="text-box" ref={taskNameRef} placeholder="Enter a Task for Today" type="text" />
         </div>
         <div className="col">
-          <button className="btn btn-success" onClick={addTask}>Add Task</button>
+          <button className="btn btn-outline-success" onClick={addTask}>Add Task</button>
         </div>
       </div>
-      <TodoList tasks={tasks} toggleTask={toggleTask}/>
-      <button className="btn btn-primary" onClick = {clearCompleted}>Clear Completed Tasks</button>
-      <button className="btn btn-danger" onClick = {clearTasks}>Clear All</button>
-      <h3>{tasks.filter (todo => !todo.completed).length} Tasks left</h3>
+      <div className="row">
+        <TodoList tasks={tasks} toggleTask={toggleTask}/>
+      </div>
+      <div id="clear-btn-div"className="row">
+        <div className="col">
+          <button className="btn btn-outline-primary" onClick = {clearCompleted}>Clear Completed Tasks</button>
+          <button className="btn btn-outline-danger ms-3" onClick = {clearTasks}>Clear All</button>
+        </div>
+      </div>
+      <div className="row">
+        <h3>{tasks.filter (task => !task.completed ).length} Tasks left</h3>
+      </div>
     </div>
   )
 }
